@@ -7,15 +7,15 @@
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License">
 </p>
 
-**Lyrebird**（琴鸟）是一款专为内容创作者打造的播客级 AI 语音合成平台。它深度集成了阿里 **CosyVoice 3.0** 模型，让您能够通过简单的文字输入或文档上传，生成具有极高还原度、丰富情感表现力的多角色对话音频。
+**Lyrebird**（琴鸟）是一款专为内容创作者打造的播客级 AI 语音合成平台。它深度集成阿里 **CosyVoice 3.0** 本地模型与 **Google Gemini** 智能分析引擎，通过 AI 驱动的内容分析与语气优化，为您生成具有极高还原度、自然流畅的多角色播客音频。
 
 ---
 
 ## ✨ 核心优势
 
-*   🚀 **最强引擎支持**：深度适配 CosyVoice 3.0，支持 Flash 推理，音质细腻，响应极快。
+*   🚀 **最强引擎支持**：深度适配 CosyVoice 3.0 本地模型，支持 Flash 推理，音质细腻，响应极快。
 *   🪄 **零样本音色克隆**：只需 3-10 秒参考音频，即可实现极高相似度的声纹复刻，完美捕捉每一个语调细节。
-*   🎭 **智能多角色对话**：内置 LLM（如 Gemini/GPT-4）脚本生成引擎，一键生成深度博弈、自然流动的播客对话脚本。
+*   🧠 **Gemini 驱动的智能创作**：深度集成 **Google Gemini** 作为核心 LLM 引擎，不仅支持播客脚本的一键生成，更通过强大的语义理解能力对生成的语气进行二次优化与润色。
 *   🏗️ **精细化情感控制**：支持通过 XML 标签（如 `<happy>`, `<whisper>`, `<serious>`）精准控制每一句话的情感起伏。
 *   🎨 **极致交互体验**：现代、极简的 Web UI 界面，支持深色模式、实时波形显示及可视化的语音库管理。
 
@@ -78,8 +78,11 @@ pip install -r requirements.txt
 ### 4. 环境变量配置
 复制 `.env.example` 并重命名为 `.env`，填入您的 API Key 及路径配置：
 ```env
-OPENAI_API_KEY=your_key_here
-OPENAI_BASE_URL=https://api.openai.com/v1
+# Google Gemini (通过 OpenAI 兼容接口)
+OPENAI_API_KEY=your_google_gemini_api_key
+OPENAI_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai/
+LLM_MODEL=gemini-1.5-flash
+
 # 本地模型路径
 MODEL_DIR=./pretrained_models/Fun-CosyVoice3-0.5B
 ```
