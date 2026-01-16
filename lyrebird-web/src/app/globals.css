@@ -1,4 +1,4 @@
-@import "../../node_modules/tailwindcss/index.css";
+@import "tailwindcss";
 
 @layer utilities {
   .adaptive-text {

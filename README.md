@@ -4,6 +4,8 @@
   <img src="https://img.shields.io/badge/Model-CosyVoice--3.0-purple?style=for-the-badge&logo=ai" alt="Model">
   <img src="https://img.shields.io/badge/Backend-FastAPI-green?style=for-the-badge&logo=fastapi" alt="FastAPI">
   <img src="https://img.shields.io/badge/Frontend-React-blue?style=for-the-badge&logo=react" alt="React">
+  <img src="https://img.shields.io/badge/Styling-Tailwind--CSS-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS">
+  <img src="https://img.shields.io/badge/Auth-Clerk-6C47FF?style=for-the-badge&logo=clerk" alt="Clerk">
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License">
 </p>
 
@@ -17,7 +19,8 @@
 *   🪄 **零样本音色克隆**：只需 3-10 秒参考音频，即可实现极高相似度的声纹复刻，完美捕捉每一个语调细节。
 *   🧠 **Gemini 驱动的智能创作**：深度集成 **Google Gemini** 作为核心 LLM 引擎，不仅支持播客脚本的一键生成，更通过强大的语义理解能力对生成的语气进行二次优化与润色。
 *   🏗️ **精细化情感控制**：支持通过 XML 标签（如 `<happy>`, `<whisper>`, `<serious>`）精准控制每一句话的情感起伏。
-*   🎨 **极致交互体验**：现代、极简的 Web UI 界面，支持深色模式、实时波形显示及可视化的语音库管理。
+*   🔐 **安全的企业级鉴权**：集成 **Clerk** 提供极速、安全的登录验证体验，为用户数据与个性化配置保驾护航。
+*   🎨 **极致交互体验**：基于 **Tailwind CSS** 打造的现代、极简 Web UI，支持深色模式、实时波形显示及可视化的语音库管理。
 
 ---
 
@@ -105,6 +108,8 @@ npm run dev
 - [x] CosyVoice 3.0 深度集成
 - [x] 多角色播客脚本自动生成
 - [x] 精细化标签管理 (XML 标签控制)
+- [x] Clerk 身份验证集成
+- [ ] 基于 Clerk 的会员订阅与计费系统
 - [ ] 导出 SRT 字幕文件
 - [ ] 接入多模态模型自动生成视频封面
 
