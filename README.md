@@ -119,8 +119,8 @@ npm run dev
 
 欢迎提交 Issue 或 Pull Request。如果有商务合作或定制化需求，请通过以下方式联系：
 
-*   **Email**: your-email@example.com
-*   **WeChat**: [Your_ID]
+*   **Email**: 42971671@qq.com
+*   **WeChat**: song_hansong
 
 ---
 
