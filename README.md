@@ -1,197 +1,121 @@
-# 🎙️ VibeVoice Studio
+# 🎙️ Lyrebird: 次世代 AI 播客工作室
 
-A beautiful, modern web application for AI-powered voice synthesis using Microsoft's VibeVoice model. Generate natural-sounding speech from text with custom voice profiles.
+<p align="center">
+  <img src="https://img.shields.io/badge/Model-CosyVoice--3.0-purple?style=for-the-badge&logo=ai" alt="Model">
+  <img src="https://img.shields.io/badge/Backend-FastAPI-green?style=for-the-badge&logo=fastapi" alt="FastAPI">
+  <img src="https://img.shields.io/badge/Frontend-React-blue?style=for-the-badge&logo=react" alt="React">
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" alt="License">
+</p>
 
-![VibeVoice Studio](https://img.shields.io/badge/VibeVoice-Studio-purple?style=for-the-badge&logo=microphone)
-![Python](https://img.shields.io/badge/Python-3.9+-blue?style=for-the-badge&logo=python)
-![FastAPI](https://img.shields.io/badge/FastAPI-Modern-green?style=for-the-badge&logo=fastapi)
+**Lyrebird**（琴鸟）是一款专为内容创作者打造的播客级 AI 语音合成平台。它深度集成了阿里 **CosyVoice 3.0** 模型，让您能够通过简单的文字输入或文档上传，生成具有极高还原度、丰富情感表现力的多角色对话音频。
 
-## ✨ Features
+---
 
-- 🎤 **Voice Training**: Upload audio files or record your voice directly  
-- 📝 **Text-to-Speech**: Convert text or text files to natural speech  
-- 🎭 **Multiple Speakers**: Support for up to 4 distinct speakers  
-- 💾 **Voice Library**: Save and manage custom voice profiles  
-- 🎨 **Beautiful UI**: Modern, responsive design with dark/light themes  
-- ⚡ **Real-time Processing**: Fast speech generation with streaming support  
-- 📊 **Audio Visualization**: Live waveform display during recording  
-- 💾 **Download & Save**: Export generated audio files  
+## ✨ 核心优势
 
-## 🎬 Demo
+*   🚀 **最强引擎支持**：深度适配 CosyVoice 3.0，支持 Flash 推理，音质细腻，响应极快。
+*   🪄 **零样本音色克隆**：只需 3-10 秒参考音频，即可实现极高相似度的声纹复刻，完美捕捉每一个语调细节。
+*   🎭 **智能多角色对话**：内置 LLM（如 Gemini/GPT-4）脚本生成引擎，一键生成深度博弈、自然流动的播客对话脚本。
+*   🏗️ **精细化情感控制**：支持通过 XML 标签（如 `<happy>`, `<whisper>`, `<serious>`）精准控制每一句话的情感起伏。
+*   🎨 **极致交互体验**：现代、极简的 Web UI 界面，支持深色模式、实时波形显示及可视化的语音库管理。
 
-https://github.com/user-attachments/assets/98868684-3c8c-40bf-848a-d13f9c8f1913
+---
 
+## 🏗️ 代码结构
 
+项目的核心逻辑位于 `backend` 目录下，下表详细说明了各部分的功能：
 
-<figcaption>VibeVoice Studio end-to-end TTS, voice library, and multi-speaker demo.</figcaption>
-
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Python 3.9 or higher  
-- CUDA-capable GPU (recommended)  
-- 8GB+ RAM  
-
-### Installation
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/shamspias/vibevoice-studio.git
-cd vibevoice-studio
-````
-
-2. **Create virtual environment**
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+```text
+Lyrebird-studio/
+├── backend/ # 后端核心目录
+│   ├── app/
+│   │   ├── api/ # API 路由定义 (FastAPI)
+│   │   │   ├── routes.py # 核心业务逻辑分发
+│   │   │   └── __init__.py
+│   │   ├── services/ # 核心服务层
+│   │   │   ├── voice_service.py # 语音生成业务逻辑封装
+│   │   │   ├── voice_engine_service.py # CosyVoice 3.0 推理接口实现
+│   │   │   ├── audio_service.py # 音频处理与存储服务
+│   │   │   └── llm_service.py # 播客脚本生成与情感优化服务
+│   │   ├── config.py # 全局配置管理 (路径、模型设置)
+│   │   └── models.py # Pydantic 数据模型
+│   ├── CosyVoice/ # CosyVoice 官方 SDK 源码 (核心推理依赖)
+│   ├── pretrained_models/ # 预训练模型存储目录
+│   │   └── Fun-CosyVoice3-0.5B/ # 核心 3.0 模型文件
+│   ├── voices/ # 用户录制或上传的音色文件
+│   ├── outputs/ # 生成的播客音频及元数据
+│   └── main.py # 程序入口
+└── lyrebird-web/ # 前端 UI 项目目录 (Next.js/React)
 ```
 
-3. **Install VibeVoice**
+---
 
+## 🚀 快速开始
+
+### 1. 环境准备
+*   操作系统：Mac (M1/M2/M3) 或 NVIDIA GPU (Linux/Windows)
+*   Python 环境：推荐使用 Python 3.10+
+*   依赖库：需安装 `ffmpeg` (处理音频)
+
+### 2. 安装依赖
 ```bash
-git clone https://github.com/shamspias/VibeVoice
-cd VibeVoice
-pip install -e .
-cd ..
-```
+# 1. 克隆项目
+git clone https://github.com/your-username/Lyrebird.git
+cd Lyrebird
 
-4. **Install dependencies**
+# 2. 创建并激活虚拟环境 (推荐 Conda)
+conda create -n Lyrebird python=3.10
+conda activate Lyrebird
 
-```bash
+# 3. 安装后端依赖
+cd backend
 pip install -r requirements.txt
 ```
 
-5. **Configure environment**
+### 3. 模型下载
+请将 CosyVoice 3.0 模型文件放置于 `backend/pretrained_models/Fun-CosyVoice3-0.5B` 目录下。
 
-```bash
-cp .env.example .env
-# Edit .env with your settings
-```
-
-6. **Run the application**
-
-```bash
-python -m app.main
-```
-
-7. **Open in browser**
-
-```
-http://localhost:8000
-```
-
-## 🎨 Features Overview
-
-### Voice Management
-
-* Upload or record voices
-* Support for WAV, MP3, M4A, FLAC
-* Organized voice library
-
-### Text Processing
-
-* Manual input or upload `.txt` files
-* Multi-speaker support for conversations
-
-### Generation Settings
-
-* Voice strength (CFG scale 1.0–2.0)
-* Up to 4 speakers
-* Adjustable inference steps
-
-### Output Options
-
-* Play in browser
-* Download WAV file
-* Save to library
-
-## 🔧 Configuration
-
-Edit `.env`:
-
+### 4. 环境变量配置
+复制 `.env.example` 并重命名为 `.env`，填入您的 API Key 及路径配置：
 ```env
-HOST=0.0.0.0
-PORT=8000
-DEBUG=False
-MODEL_PATH=microsoft/VibeVoice-1.5B
-DEVICE=cuda
-CFG_SCALE=1.3
-SAMPLE_RATE=24000
+OPENAI_API_KEY=your_key_here
+OPENAI_BASE_URL=https://api.openai.com/v1
+# 本地模型路径
+MODEL_DIR=./pretrained_models/Fun-CosyVoice3-0.5B
 ```
 
-## 🎯 Usage Examples
+### 5. 启动服务
+```bash
+# 后端启动 (默认端口 8000)
+python -m app.main
 
-### Basic TTS
-
-1. Select/upload a voice
-2. Enter text
-3. Click "Generate Speech"
-
-### Multi-Speaker
-
-```text
-Speaker 1: Hello, welcome!
-Speaker 2: Thanks, glad to be here.
+# 前端启动 (另开窗口)
+cd ../lyrebird-web
+npm install
+npm run dev
 ```
 
-### Voice Cloning
+---
 
-1. Record 10–30s of clear speech
-2. Save with name
-3. Use for TTS generation
+## 🗺️ 路线图 (Roadmap)
 
-## 🛠️ API Documentation
+- [x] CosyVoice 3.0 深度集成
+- [x] 多角色播客脚本自动生成
+- [x] 精细化标签管理 (XML 标签控制)
+- [ ] 导出 SRT 字幕文件
+- [ ] 接入多模态模型自动生成视频封面
 
-### Endpoints
+---
 
-* `GET /api/voices` — list voices
-* `POST /api/voices/upload` — upload voice
-* `POST /api/voices/record` — record voice
-* `POST /api/generate` — generate speech
-* `GET /api/audio/{filename}` — download audio
+## 🤝 贡献与反馈
 
-## 🚦 System Requirements
+欢迎提交 Issue 或 Pull Request。如果有商务合作或定制化需求，请通过以下方式联系：
 
-**Minimum**: Python 3.9+, 8GB RAM, CPU with AVX
-**Recommended**: Python 3.10+, 16GB RAM, NVIDIA GPU (8GB+ VRAM)
+*   **Email**: your-email@example.com
+*   **WeChat**: [Your_ID]
 
-## 🐛 Troubleshooting
+---
 
-* **OOM**: Use smaller model, reduce batch size
-* **Low quality**: Use better voice samples, adjust CFG scale
-* **Slow generation**: Enable GPU, shorten text
+## 📄 免责声明
 
-## 📈 Performance Tips
-
-* Use GPU for 10–20× speed
-* Batch texts
-* Cache voices
-* Try quantized models
-
-## 🤝 Contributing
-
-1. Fork repo
-2. Create feature branch
-3. Commit & push
-4. Open PR
-
-## 📄 License
-
-MIT License
-
-## 🙏 Acknowledgments
-
-* Microsoft VibeVoice team
-* FastAPI community
-* Contributors & users
-
-## 📞 Support
-
-* Issues: [GitHub Issues](https://github.com/shamspias/vibevoice-app/issues)
-
-## 🔗 Links
-
-* [VibeVoice Model](https://github.com/microsoft/VibeVoice)
-* [FastAPI Docs](https://fastapi.tiangolo.com)
+本工具仅用于学术研究及个人学习。请确保在使用生成的音频时符合当地法律法规，严禁将克隆音色用于任何违法违规的欺诈或误导性活动。
